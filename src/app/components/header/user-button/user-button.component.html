@@ -1,0 +1,12 @@
+<div class="user-button-container" #container>
+  <div class="user-button" (click)="toggleMenu()">
+    <img src="/icons/user-profile.svg" alt="Photo de profile" />
+    <img class="user-button-arrow" src="/icons/arrow.svg" alt="Photo de profile" />
+  </div>
+
+  <div class="user-menu" *ngIf="isMenuOpen">
+    <a href="#">Créer un compte</a>
+    <a href="#">Se connecter</a>
+  </div>
+</div>
+
