@@ -10,7 +10,7 @@ import {NgIf} from '@angular/common';
   styleUrl: './user-button.component.css'
 })
 export class UserButtonComponent {
-  isMenuOpen = true;
+  isMenuOpen = false;
 
   @ViewChild('container') container!: ElementRef;
 

@@ -1,0 +1,50 @@
+.formation-card {
+  width: 350px;
+  height: 250px;
+  border: 1px solid black;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.formation-card:hover {
+  cursor: pointer;
+}
+
+.formation-card:hover .f-card-image {
+  transition: all 0.1s ease-in-out;
+  scale: 1.1;
+}
+
+.f-card-image-container {
+  height: 50%;
+  width: 100%;
+  background-color: #dddddd;
+}
+
+.f-card-information {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+.f-card-header {
+
+}
+
+.f-card-header span {
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.f-card-header h2 {
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.f-card-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+}
