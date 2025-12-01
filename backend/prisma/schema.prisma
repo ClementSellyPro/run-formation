@@ -1,14 +1,54 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
-  provider = "prisma-client"
-  output   = "../generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum InscriptionStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model User {
+  id       String @id @default(uuid())
+  email    String @unique
+  password String
+  role     Role   @default(USER)
+
+  inscriptions Inscription[]
+
+  @@map("users")
+}
+
+model Formation {
+  id          String @id @default(uuid())
+  title       String
+  description String @db.Text
+
+  inscriptions Inscription[]
+
+  @@map("formations")
+}
+
+model Inscription {
+  id     String            @id @default(uuid())
+  status InscriptionStatus @default(PENDING)
+
+  userId      String
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  formationId String
+  formation   Formation @relation(fields: [formationId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, formationId])
+  @@map("inscriptions")
 }
