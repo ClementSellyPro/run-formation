@@ -11,6 +11,14 @@
 npm-debug.log
 yarn-error.log
 
+# Angular
+/frontend/node_modules
+/frontend/.env
+
+# NestJS
+/backend/node_modules
+/backend/.env
+
 # IDEs and editors
 .idea/
 .project
