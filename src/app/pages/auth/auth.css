@@ -1,0 +1,48 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 42px;
+  padding-top: 42px;
+}
+
+.form-container h1 {
+  font-size: 36px;
+  font-weight: 500;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width:40%;
+  min-width: 300px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.input-group label {
+  font-size: 1rem;
+}
+
+.input-group input {
+  font-size: 24px;
+  padding-left: 8px;
+  height: 42px;
+}
+
+form button {
+  padding: 8px;
+  font-weight: 500;
+  margin-top: 16px;
+}
+
+form button:hover {
+  cursor: pointer;
+}

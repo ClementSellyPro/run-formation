@@ -5,8 +5,8 @@
   </div>
 
   <div class="user-menu" *ngIf="isMenuOpen">
-    <a href="#">Créer un compte</a>
-    <a href="#">Se connecter</a>
+    <a class="link" routerLink="/auth/signup" (click)="closeMenu()">Créer un compte</a>
+    <a class="link" routerLink="/auth/login" (click)="closeMenu()">Se connecter</a>
   </div>
 </div>
 
