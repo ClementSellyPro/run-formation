@@ -33,6 +33,9 @@ model Formation {
   id          String @id @default(uuid())
   title       String
   description String @db.Text
+  domaine     String
+  duration    Int
+  content     String
 
   inscriptions Inscription[]
 
