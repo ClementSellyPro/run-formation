@@ -1,20 +1,27 @@
 <div class="signup-container">
-  <div class="form-container">
-    <h1>Créer un compte</h1>
+  <div class="signup-top">
+    <img src="/icons/logo.svg" alt="Logo Run Formation" />
 
-    <form>
-      <div class="input-group">
-        <label for="email">Email:</label>
-        <input id="email" class="email" type="email" />
-      </div>
-
-      <div class="input-group">
-        <label for="password">Mot de passe:</label>
-        <input id="password" class="passwords" type="password" />
-      </div>
-
-      <button>Envoyer</button>
-    </form>
+    <div class="signup-text">
+      <h1>Bienvenu sur Run Formation.</h1>
+      <p>Veuillez créer un compte ou vous connecter pour accéder à la liste de formations.</p>
+    </div>
   </div>
+
+  <form>
+    <div class="input-group">
+      <label for="email">Email:</label>
+      <input id="email" class="email" type="email" />
+    </div>
+
+    <div class="input-group">
+      <label for="password">Mot de passe:</label>
+      <input id="password" class="passwords" type="password" />
+    </div>
+
+    <button>Envoyer</button>
+  </form>
+
+  <p>Vous avez déjà un compte ? <a routerLink="/auth/login" class="signup-login-link">Connectez vous ici</a></p>
 </div>
 
