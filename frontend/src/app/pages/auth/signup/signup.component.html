@@ -8,18 +8,18 @@
     </div>
   </div>
 
-  <form>
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
     <div class="input-group">
       <label for="email">Email:</label>
-      <input id="email" class="email" type="email" />
+      <input id="email" class="email" type="email" formControlName="email" />
     </div>
 
     <div class="input-group">
       <label for="password">Mot de passe:</label>
-      <input id="password" class="passwords" type="password" />
+      <input id="password" class="passwords" type="password" formControlName="password" />
     </div>
 
-    <button>Envoyer</button>
+    <button type="submit" [disabled]="signupForm.invalid">Envoyer</button>
   </form>
 
   <p>Vous avez déjà un compte ? <a routerLink="/auth/login" class="signup-login-link">Connectez vous ici</a></p>
