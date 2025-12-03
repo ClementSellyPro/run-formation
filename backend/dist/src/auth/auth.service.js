@@ -54,7 +54,7 @@ let AuthService = class AuthService {
         this.prisma = prisma;
         this.jwtService = jwtService;
     }
-    async register(signupDto) {
+    async signup(signupDto) {
         const { email, password } = signupDto;
         const existingUser = await this.prisma.user.findUnique({
             where: { email },
@@ -77,6 +77,33 @@ let AuthService = class AuthService {
         });
         return {
             message: 'Inscription réussie',
+            user: {
+                id: user.id,
+                email: user.email,
+                role: user.role,
+            },
+            token,
+        };
+    }
+    async login(loginDto) {
+        const { email, password } = loginDto;
+        const user = await this.prisma.user.findUnique({
+            where: { email },
+        });
+        if (!user) {
+            throw new common_1.UnauthorizedException('Email ou mot de passe incorrect');
+        }
+        const isPasswordValid = await bcrypt.compare(password, user.password);
+        if (!isPasswordValid) {
+            throw new common_1.UnauthorizedException('Email ou mot de passe incorrect');
+        }
+        const token = this.jwtService.sign({
+            sub: user.id,
+            email: user.email,
+            role: user.role,
+        });
+        return {
+            message: 'Connexion réussie',
             user: {
                 id: user.id,
                 email: user.email,
