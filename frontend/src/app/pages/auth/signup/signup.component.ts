@@ -7,7 +7,7 @@ import {RouterLink} from '@angular/router';
     RouterLink
   ],
   templateUrl: './signup.component.html',
-  styleUrls: ['../auth.css', 'signup.component.css']
+  styleUrl: '../auth.css'
 })
 export class SignupComponent {
 

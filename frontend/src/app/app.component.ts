@@ -17,7 +17,7 @@ export class AppComponent {
     this.router.events.subscribe((event) => {
       const url = this.router.url;
 
-      const routes = ['/', '/login'];
+      const routes = ['/', '/auth/login'];
 
       this.hideHeader = routes.includes(url);
     })
