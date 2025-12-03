@@ -17,6 +17,12 @@ export class AuthService {
     );
   }
 
+  login(data: AuthRequest): Observable<AuthResponse> {
+    return this.http.post<AuthResponse>(`${this.apiUrl}/login`, data).pipe(
+      tap(response => this.saveToken(response.token))
+    )
+  }
+
   private saveToken(token: string): void {
     localStorage.setItem('token', token);
   }
