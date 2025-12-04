@@ -28,6 +28,23 @@ let FormationsService = class FormationsService {
             },
         });
     }
+    async findOne(id) {
+        const formation = await this.prisma.formation.findUnique({
+            where: { id },
+            select: {
+                id: true,
+                title: true,
+                description: true,
+                domaine: true,
+                duration: true,
+                content: true,
+            },
+        });
+        if (!formation) {
+            throw new common_1.NotFoundException('Formation introuvable');
+        }
+        return formation;
+    }
 };
 exports.FormationsService = FormationsService;
 exports.FormationsService = FormationsService = __decorate([

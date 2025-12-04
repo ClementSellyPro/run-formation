@@ -9,4 +9,12 @@ export declare class FormationsService {
         domaine: string;
         duration: number;
     }[]>;
+    findOne(id: string): Promise<{
+        id: string;
+        title: string;
+        description: string;
+        domaine: string;
+        duration: number;
+        content: string;
+    }>;
 }

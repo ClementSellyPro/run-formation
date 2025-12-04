@@ -1,0 +1,55 @@
+.formation-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 32px;
+  width: 60%;
+  min-width: 500px;
+  padding-top: 96px;
+}
+
+.formation-back-link {
+  position: absolute;
+  top: 10px;
+  text-decoration: none;
+  color: black;
+}
+.formation-back-link:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.formation-title-description {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formation-title {
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.formation-description {
+
+}
+
+.formation-duration {
+  font-weight: 500;
+}
+
+.formation-inscription-btn {
+  border: none;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 5px;
+  background-color: #3573ED;
+  color: white;
+}
+
+.formation-inscription-btn:hover {
+  cursor: pointer;
+  filter: brightness(0.9);
+}
