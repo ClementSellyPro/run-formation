@@ -93,4 +93,15 @@ export class AuthService {
       token,
     };
   }
+
+  async validateUser(userId: string) {
+    return this.prisma.user.findUnique({
+      where: { id: userId },
+      select: {
+        id: true,
+        email: true,
+        role: true,
+      },
+    });
+  }
 }

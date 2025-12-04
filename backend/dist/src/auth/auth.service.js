@@ -112,6 +112,16 @@ let AuthService = class AuthService {
             token,
         };
     }
+    async validateUser(userId) {
+        return this.prisma.user.findUnique({
+            where: { id: userId },
+            select: {
+                id: true,
+                email: true,
+                role: true,
+            },
+        });
+    }
 };
 exports.AuthService = AuthService;
 exports.AuthService = AuthService = __decorate([
