@@ -4,13 +4,12 @@
   </div>
   <div class="f-card-information">
     <div class="f-card-header">
-      <span>COMMERCE</span>
-      <h2>Conseiller de vente</h2>
+      <span>{{ formationData.domaine | uppercase }}</span>
+      <h2>{{ formationData.title }}</h2>
     </div>
 
     <div class="f-card-details">
-      <p>Titre professionnel Niveau 4 - BAC</p>
-      <p>Durée: 18 mois</p>
+      <p>Durée: {{ formationData.duration }} mois</p>
     </div>
   </div>
 </div>

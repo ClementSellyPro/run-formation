@@ -1,11 +1,15 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Formation} from '../../../models/formation.model';
+import {UpperCasePipe} from '@angular/common';
 
 @Component({
   selector: 'app-formation-card',
-  imports: [],
+  imports: [
+    UpperCasePipe
+  ],
   templateUrl: './formation-card.component.html',
   styleUrl: './formation-card.component.css'
 })
 export class FormationCardComponent {
-
+  @Input() formationData!:  Formation;
 }

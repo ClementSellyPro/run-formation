@@ -3,3 +3,9 @@
   flex-direction: column;
   gap: 16px;
 }
+
+.home-list-formations {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 32px 0;
+}

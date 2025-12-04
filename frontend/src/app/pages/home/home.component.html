@@ -1,4 +1,12 @@
 <div class="home-container">
   <h1>Découvrez nos formations</h1>
-  <app-formation-card />
+  <div class="home-list-formations">
+    @if (loading) {
+      <p>Chargement...</p>
+    }
+
+    @for (formation of listFormations; track formation.id){
+      <app-formation-card [formationData]="formation" />
+    }
+  </div>
 </div>

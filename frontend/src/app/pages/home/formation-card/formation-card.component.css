@@ -8,17 +8,30 @@
 
 .formation-card:hover {
   cursor: pointer;
+  box-shadow: 2px 5px 10px rgba(0,0,0,0.1);
 }
 
 .formation-card:hover .f-card-image {
-  transition: all 0.1s ease-in-out;
-  scale: 1.1;
+  scale: 1.5;
 }
 
 .f-card-image-container {
-  height: 50%;
+  height: 60%;
   width: 100%;
-  background-color: #dddddd;
+  background: #833AB4;
+  background: linear-gradient(90deg, rgb(53, 114, 235) 0%, rgb(252, 75, 78) 50%, rgb(255, 210, 11) 100%);
+  filter: brightness(0.7);
+}
+
+.formation-card:hover .f-card-image-container {
+  filter: brightness(0.8);
+}
+
+.f-card-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
 }
 
 .f-card-information {
@@ -26,10 +39,6 @@
   flex-direction: column;
   gap: 10px;
   padding: 10px;
-}
-
-.f-card-header {
-
 }
 
 .f-card-header span {
