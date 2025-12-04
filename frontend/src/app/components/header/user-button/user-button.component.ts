@@ -24,7 +24,11 @@ export class UserButtonComponent {
 
   closeMenu() {
     this.isMenuOpen = false;
+  }
+
+  logout() {
     this.authService.logout();
+    this.closeMenu();
   }
 
   // Referme le menu si l'utilisateur clique en dehors
