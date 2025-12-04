@@ -5,6 +5,7 @@ import {LoginComponent} from './pages/auth/login/login.component';
 import {authGuard} from './core/guards/auth.guard';
 import {adminGuard} from './core/guards/admin.guard';
 import {DashboardComponent} from './pages/dashboard/dashboard.component';
+import {FormationComponent} from './pages/formation/formation.component';
 
 export const routes: Routes = [
   {
@@ -19,6 +20,11 @@ export const routes: Routes = [
     path: 'home',
     component: HomeComponent,
     canActivate: [authGuard],
+  },
+  {
+    path: 'formation/:id',
+    component: FormationComponent,
+    canActivate: [authGuard]
   },
   {
     path: 'dashboard',

@@ -1,4 +1,4 @@
-import { Controller, Get, UseGuards } from '@nestjs/common';
+import { Controller, Get, Param, UseGuards } from '@nestjs/common';
 import { FormationsService } from './formations.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
@@ -10,5 +10,10 @@ export class FormationsController {
   @Get()
   async getAll() {
     return this.formationsService.findAll();
+  }
+
+  @Get(':id')
+  async getOne(@Param('id') id: string) {
+    return this.formationsService.findOne(id);
   }
 }
