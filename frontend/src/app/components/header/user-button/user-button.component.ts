@@ -1,7 +1,7 @@
 import {Component, ElementRef, HostListener, ViewChild} from '@angular/core';
 import {NgIf} from '@angular/common';
 import {RouterLink} from '@angular/router';
-import {AuthService} from '../../../services/auth.service.ts.service';
+import {AuthService} from '../../../services/auth.service';
 
 @Component({
   selector: 'app-user-button',

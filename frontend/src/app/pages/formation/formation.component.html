@@ -10,5 +10,5 @@
   </div>
   <p><span class="formation-duration">Durée:</span> {{ formationData.duration }} Mois</p>
 
-  <button class="formation-inscription-btn">M'inscrire à la formation</button>
+  <button class="formation-inscription-btn" (click)="inscriptionFormation(formationData.id)">M'inscrire à la formation</button>
 </div>

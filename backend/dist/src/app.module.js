@@ -13,12 +13,13 @@ const app_service_1 = require("./app.service");
 const prisma_module_1 = require("./prisma/prisma.module");
 const auth_module_1 = require("./auth/auth.module");
 const formations_module_1 = require("./formations/formations.module");
+const inscriptions_module_1 = require("./inscriptions/inscriptions.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [prisma_module_1.PrismaModule, auth_module_1.AuthModule, formations_module_1.FormationsModule],
+        imports: [prisma_module_1.PrismaModule, auth_module_1.AuthModule, formations_module_1.FormationsModule, inscriptions_module_1.InscriptionsModule],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })

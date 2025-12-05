@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Formation} from '../../models/formation.model';
 import {FormationsService} from '../../services/formations.service';
 import {ActivatedRoute, RouterLink} from '@angular/router';
+import {InscriptionsService} from '../../services/inscriptions.service';
 
 @Component({
   selector: 'app-formation',
@@ -16,7 +17,7 @@ export class FormationComponent implements OnInit {
   formationData!: Formation;
   loading = false;
 
-  constructor(private formationsService: FormationsService, private route: ActivatedRoute) {}
+  constructor(private formationsService: FormationsService, private inscriptionsService: InscriptionsService, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.formationId = this.route.snapshot.paramMap.get('id');
@@ -38,5 +39,9 @@ export class FormationComponent implements OnInit {
         this.loading = false;
       }
     });
+  }
+
+  inscriptionFormation(formationId: string) {
+    this.inscriptionsService.createInscription(formationId).subscribe();
   }
 }
