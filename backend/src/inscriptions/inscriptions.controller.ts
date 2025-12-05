@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  UseGuards,
+  Patch,
+  Param,
+} from '@nestjs/common';
 import { InscriptionsService } from './inscriptions.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { User } from '../auth/user.decorator';
@@ -33,5 +41,13 @@ export class InscriptionsController {
   @Roles('ADMIN')
   async getPending() {
     return this.inscriptionsService.findPending();
+  }
+
+  // ADMIN : Approuver une inscription
+  @Patch(':id/approve')
+  @UseGuards(RolesGuard)
+  @Roles('ADMIN')
+  async approve(@Param('id') id: string) {
+    return this.inscriptionsService.approve(id);
   }
 }

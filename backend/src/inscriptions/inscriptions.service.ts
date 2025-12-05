@@ -1,4 +1,8 @@
-import { ConflictException, Injectable } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 
 @Injectable()
@@ -71,6 +75,21 @@ export class InscriptionsService {
         },
       },
       orderBy: { id: 'desc' },
+    });
+  }
+
+  async approve(id: string) {
+    const inscription = await this.prisma.inscription.findUnique({
+      where: { id },
+    });
+
+    if (!inscription) {
+      throw new NotFoundException('Inscription introuvable');
+    }
+
+    return this.prisma.inscription.update({
+      where: { id },
+      data: { status: 'APPROVED' },
     });
   }
 }

@@ -21,9 +21,12 @@ export class DashboardComponent implements OnInit {
   loadInscription(){
     this.adminInscriptionsService.getPendingInscription().subscribe({
       next: (data: any) => {
-        console.log(data);
         this.listInscriptions = data;
       }
     })
+  }
+
+  approveInscription(inscriptionId: number) {
+
   }
 }

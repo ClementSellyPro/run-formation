@@ -18,7 +18,7 @@
         <td>{{ inscription.formation.title }}</td>
         <td>{{ inscription.status }}</td>
         <td class="dashboard-buttons">
-          <button class="dashboard-approve-btn">Approuver</button>
+          <button class="dashboard-approve-btn" (click)="approveInscription(inscription.id)">Approuver</button>
           <button class="dashboard-reject-btn">Rejeter</button>
         </td>
       </tr>
