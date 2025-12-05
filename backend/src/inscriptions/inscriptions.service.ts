@@ -51,4 +51,26 @@ export class InscriptionsService {
       orderBy: { status: 'asc' },
     });
   }
+
+  async findPending() {
+    return this.prisma.inscription.findMany({
+      where: { status: 'PENDING' },
+      include: {
+        user: {
+          select: {
+            id: true,
+            email: true,
+          },
+        },
+        formation: {
+          select: {
+            id: true,
+            title: true,
+            domaine: true,
+          },
+        },
+      },
+      orderBy: { id: 'desc' },
+    });
+  }
 }
