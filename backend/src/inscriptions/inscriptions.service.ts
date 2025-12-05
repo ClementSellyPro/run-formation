@@ -92,4 +92,19 @@ export class InscriptionsService {
       data: { status: 'APPROVED' },
     });
   }
+
+  async reject(id: string) {
+    const inscription = await this.prisma.inscription.findUnique({
+      where: { id },
+    });
+
+    if (!inscription) {
+      throw new NotFoundException('Inscription introuvable');
+    }
+
+    return this.prisma.inscription.update({
+      where: { id },
+      data: { status: 'REJECTED' },
+    });
+  }
 }

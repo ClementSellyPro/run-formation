@@ -50,4 +50,12 @@ export class InscriptionsController {
   async approve(@Param('id') id: string) {
     return this.inscriptionsService.approve(id);
   }
+
+  // ADMIN : Rejeter une inscription
+  @Patch(':id/reject')
+  @UseGuards(RolesGuard)
+  @Roles('ADMIN')
+  async reject(@Param('id') id: string) {
+    return this.inscriptionsService.reject(id);
+  }
 }
