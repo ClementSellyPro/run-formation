@@ -36,6 +36,9 @@ let InscriptionsController = class InscriptionsController {
     async approve(id) {
         return this.inscriptionsService.approve(id);
     }
+    async reject(id) {
+        return this.inscriptionsService.reject(id);
+    }
 };
 exports.InscriptionsController = InscriptionsController;
 __decorate([
@@ -70,6 +73,15 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", Promise)
 ], InscriptionsController.prototype, "approve", null);
+__decorate([
+    (0, common_1.Patch)(':id/reject'),
+    (0, common_1.UseGuards)(roles_guard_1.RolesGuard),
+    (0, roles_decorator_1.Roles)('ADMIN'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], InscriptionsController.prototype, "reject", null);
 exports.InscriptionsController = InscriptionsController = __decorate([
     (0, common_1.Controller)('inscriptions'),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),

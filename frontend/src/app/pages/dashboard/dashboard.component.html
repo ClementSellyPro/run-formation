@@ -19,7 +19,7 @@
         <td>{{ inscription.status }}</td>
         <td class="dashboard-buttons">
           <button class="dashboard-approve-btn" (click)="approveInscription(inscription.id)">Approuver</button>
-          <button class="dashboard-reject-btn">Rejeter</button>
+          <button class="dashboard-reject-btn" (click)="rejectInscription(inscription.id)">Rejeter</button>
         </td>
       </tr>
     }

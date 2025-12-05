@@ -19,4 +19,9 @@ export class AdminInscriptionsService {
   approveInscription(inscriptionId: string) {
     return this.http.patch<InscriptionResponse>(`${this.apiUrl}/${inscriptionId}/approve`, {});
   }
+
+  // ADMIN : Rejeter une inscription
+  rejectInscription(inscriptionId: string) {
+    return this.http.patch<InscriptionResponse>(`${this.apiUrl}/${inscriptionId}/reject`, {});
+  }
 }

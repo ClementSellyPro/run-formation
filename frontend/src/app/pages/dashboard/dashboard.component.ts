@@ -33,4 +33,13 @@ export class DashboardComponent implements OnInit {
       }
     });
   }
+
+  rejectInscription(inscriptionId: number) {
+    const id = inscriptionId.toString();
+    this.adminInscriptionsService.rejectInscription(id).subscribe({
+      next: () => {
+        this.loadInscription();
+      }
+    })
+  }
 }

@@ -63,4 +63,10 @@ export declare class InscriptionsController {
         userId: string;
         formationId: string;
     }>;
+    reject(id: string): Promise<{
+        id: string;
+        status: import("@prisma/client").$Enums.InscriptionStatus;
+        userId: string;
+        formationId: string;
+    }>;
 }
