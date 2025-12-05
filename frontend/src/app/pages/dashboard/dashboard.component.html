@@ -12,33 +12,17 @@
       </tr>
     </thead>
     <tbody>
-    <tr>
-      <td>user.mail.com</td>
-      <td>formation</td>
-      <td>En attente</td>
-      <td class="dashboard-buttons">
-        <button class="dashboard-appouve-btn">Approuver</button>
-        <button class="dashboard-reject-btn">Rejeter</button>
-      </td>
-    </tr>
-    <tr>
-      <td>user.mail.com</td>
-      <td>formation</td>
-      <td>En attente</td>
-      <td class="dashboard-buttons">
-        <button class="dashboard-appouve-btn">Approuver</button>
-        <button class="dashboard-reject-btn">Rejeter</button>
-      </td>
-    </tr>
-    <tr>
-      <td>user.mail.com</td>
-      <td>formation</td>
-      <td>En attente</td>
-      <td class="dashboard-buttons">
-        <button class="dashboard-appouve-btn">Approuver</button>
-        <button class="dashboard-reject-btn">Rejeter</button>
-      </td>
-    </tr>
+    @for(inscription of listInscriptions; track inscription.id){
+      <tr>
+        <td>{{ inscription.user.email }}</td>
+        <td>{{ inscription.formation.title }}</td>
+        <td>{{ inscription.status }}</td>
+        <td class="dashboard-buttons">
+          <button class="dashboard-approve-btn">Approuver</button>
+          <button class="dashboard-reject-btn">Rejeter</button>
+        </td>
+      </tr>
+    }
     </tbody>
   </table>
 </div>

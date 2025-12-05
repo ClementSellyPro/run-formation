@@ -41,4 +41,20 @@ export declare class InscriptionsController {
         userId: string;
         formationId: string;
     })[]>;
+    getPending(): Promise<({
+        user: {
+            id: string;
+            email: string;
+        };
+        formation: {
+            id: string;
+            title: string;
+            domaine: string;
+        };
+    } & {
+        id: string;
+        status: import("@prisma/client").$Enums.InscriptionStatus;
+        userId: string;
+        formationId: string;
+    })[]>;
 }

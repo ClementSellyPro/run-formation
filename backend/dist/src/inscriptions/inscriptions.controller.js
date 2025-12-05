@@ -17,17 +17,21 @@ const common_1 = require("@nestjs/common");
 const inscriptions_service_1 = require("./inscriptions.service");
 const jwt_auth_guard_1 = require("../auth/jwt-auth.guard");
 const user_decorator_1 = require("../auth/user.decorator");
+const roles_guard_1 = require("../auth/roles.guard");
+const roles_decorator_1 = require("../auth/roles.decorator");
 let InscriptionsController = class InscriptionsController {
     inscriptionsService;
     constructor(inscriptionsService) {
         this.inscriptionsService = inscriptionsService;
     }
     async create(user, body) {
-        console.log(body);
         return this.inscriptionsService.create(user.id, body.formationId);
     }
     async getMyInscriptions(user) {
         return this.inscriptionsService.findByUser(user.id);
+    }
+    async getPending() {
+        return this.inscriptionsService.findPending();
     }
 };
 exports.InscriptionsController = InscriptionsController;
@@ -46,6 +50,14 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], InscriptionsController.prototype, "getMyInscriptions", null);
+__decorate([
+    (0, common_1.Get)('pending'),
+    (0, common_1.UseGuards)(roles_guard_1.RolesGuard),
+    (0, roles_decorator_1.Roles)('ADMIN'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], InscriptionsController.prototype, "getPending", null);
 exports.InscriptionsController = InscriptionsController = __decorate([
     (0, common_1.Controller)('inscriptions'),
     (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),

@@ -7,9 +7,25 @@ export interface Inscription {
 }
 
 export interface InscriptionResponse {
+  id: number;
   formation: Formation;
   formationId: string;
-  id: number;
   status: "PENDING" | "APPROVED" | "REJECTED";
   userId: string;
+}
+
+export interface InscriptionAdmin {
+  id: number;
+  formationId: string;
+  status: "PENDING";
+  userId: string;
+  user: {
+    id: string;
+    email: string;
+  };
+  formation: {
+    id: string;
+    title: string;
+    domaines: string;
+  }
 }

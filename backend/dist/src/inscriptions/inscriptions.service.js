@@ -18,17 +18,14 @@ let InscriptionsService = class InscriptionsService {
         this.prisma = prisma;
     }
     async create(userId, formationId) {
-        console.log('Debut');
         const existing = await this.prisma.inscription.findUnique({
             where: {
                 userId_formationId: { userId, formationId },
             },
         });
         if (existing) {
-            console.log('Existe');
             throw new common_1.ConflictException('Vous êtes déjà inscrit à cette formation');
         }
-        console.log('After checking: ', formationId, ' - ', userId);
         return this.prisma.inscription.create({
             data: { userId, formationId },
             include: {
@@ -60,6 +57,27 @@ let InscriptionsService = class InscriptionsService {
                 },
             },
             orderBy: { status: 'asc' },
+        });
+    }
+    async findPending() {
+        return this.prisma.inscription.findMany({
+            where: { status: 'PENDING' },
+            include: {
+                user: {
+                    select: {
+                        id: true,
+                        email: true,
+                    },
+                },
+                formation: {
+                    select: {
+                        id: true,
+                        title: true,
+                        domaine: true,
+                    },
+                },
+            },
+            orderBy: { id: 'desc' },
         });
     }
 };
