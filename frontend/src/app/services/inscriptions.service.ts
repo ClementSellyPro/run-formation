@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {Inscription} from '../models/inscripton.model';
+import {Inscription, InscriptionResponse} from '../models/inscripton.model';
 import {Observable, tap} from 'rxjs';
 
 @Injectable({
@@ -19,7 +19,7 @@ export class InscriptionsService {
   }
 
   // USER : Voir ses inscriptions
-  getMyInscriptions(): Observable<Inscription[]> {
-    return this.http.get<Inscription[]>(`${this.apiUrl}/my-inscriptions`);
+  getMyInscriptions(): Observable<InscriptionResponse[]> {
+    return this.http.get<InscriptionResponse[]>(`${this.apiUrl}/my-inscriptions`);
   }
 }
