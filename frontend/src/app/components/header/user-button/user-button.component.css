@@ -1,5 +1,6 @@
 .user-button-container {
- position: relative;
+  position: relative;
+  z-index: 10;
 }
 
 .user-button {
@@ -14,10 +15,6 @@
 .user-button:hover {
   cursor: pointer;
   background-color: #f3f3f3;
-}
-
-.user-button-arrow {
-
 }
 
 .user-menu {
@@ -41,4 +38,10 @@
 
 .user-menu a:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .user-menu {
+    right: 0;
+  }
 }

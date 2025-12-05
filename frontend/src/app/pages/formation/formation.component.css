@@ -15,6 +15,7 @@
   text-decoration: none;
   color: black;
 }
+
 .formation-back-link:hover {
   cursor: pointer;
   text-decoration: underline;
@@ -29,10 +30,6 @@
 .formation-title {
   font-size: 32px;
   font-weight: 500;
-}
-
-.formation-description {
-
 }
 
 .formation-duration {
@@ -52,4 +49,19 @@
 .formation-inscription-btn:hover {
   cursor: pointer;
   filter: brightness(0.9);
+}
+
+@media (max-width: 600px) {
+  .formation-container {
+    min-width: 100%;
+    padding-top: 48px;
+  }
+
+  .formation-back-link {
+    top: 4px;
+  }
+
+  .formation-title-description {
+    width: 100%;
+  }
 }

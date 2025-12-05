@@ -9,3 +9,14 @@
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 32px 0;
 }
+
+@media (max-width: 600px) {
+  .home-container h1 {
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  .home-list-formations {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

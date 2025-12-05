@@ -89,3 +89,27 @@ form button:hover {
   cursor: pointer;
   filter: brightness(90%);
 }
+
+@media (max-width: 600px) {
+  .auth-container {
+    gap: 32px;
+    padding: 8px;
+  }
+
+  .auth-top {
+    gap: 32px;
+  }
+
+  .auth-text {
+    gap: 16px;
+  }
+
+  .auth-text h1 {
+    font-size: 24px;
+  }
+
+  .auth-text p {
+    font-size: 16px;
+    text-align: center;
+  }
+}
