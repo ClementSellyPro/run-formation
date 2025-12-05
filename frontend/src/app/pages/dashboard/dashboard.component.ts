@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {AdminInscriptionsService} from '../../services/admin-inscriptions.service';
-import {Observable} from 'rxjs';
 import {InscriptionAdmin} from '../../models/inscripton.model';
 
 @Component({
@@ -27,6 +26,11 @@ export class DashboardComponent implements OnInit {
   }
 
   approveInscription(inscriptionId: number) {
-
+    const id = inscriptionId.toString();
+    this.adminInscriptionsService.approveInscription(id).subscribe({
+      next: () => {
+        this.loadInscription();
+      }
+    });
   }
 }

@@ -80,6 +80,18 @@ let InscriptionsService = class InscriptionsService {
             orderBy: { id: 'desc' },
         });
     }
+    async approve(id) {
+        const inscription = await this.prisma.inscription.findUnique({
+            where: { id },
+        });
+        if (!inscription) {
+            throw new common_1.NotFoundException('Inscription introuvable');
+        }
+        return this.prisma.inscription.update({
+            where: { id },
+            data: { status: 'APPROVED' },
+        });
+    }
 };
 exports.InscriptionsService = InscriptionsService;
 exports.InscriptionsService = InscriptionsService = __decorate([

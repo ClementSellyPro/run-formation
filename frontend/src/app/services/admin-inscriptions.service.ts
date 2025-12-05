@@ -10,7 +10,13 @@ export class AdminInscriptionsService {
 
   constructor(private http: HttpClient) { }
 
+  // ADMIN : Voir toutes les inscriptions en attente
   getPendingInscription() {
     return this.http.get<InscriptionAdmin[]>(`${this.apiUrl}/pending`);
+  }
+
+  // ADMIN : Approuver une inscription
+  approveInscription(inscriptionId: string) {
+    return this.http.patch<InscriptionResponse>(`${this.apiUrl}/${inscriptionId}/approve`, {});
   }
 }
