@@ -6,7 +6,7 @@
     }
 
     @for (formation of listFormations; track formation.id){
-      <app-formation-card [formationData]="formation" />
+      <app-formation-card [formationData]="formation" [isInscriptionDone]="listInscriptionsId.includes(formation.id)" />
     }
   </div>
 </div>

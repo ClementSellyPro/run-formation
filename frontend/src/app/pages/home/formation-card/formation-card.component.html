@@ -10,6 +10,8 @@
 
     <div class="f-card-details">
       <p>Durée: {{ formationData.duration }} mois</p>
+      <span *ngIf="isInscriptionDone" class="formation-card-badge">INSCRIT</span>
     </div>
+
   </div>
 </div>

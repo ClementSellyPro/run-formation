@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {FormationCardComponent} from './formation-card/formation-card.component';
 import {FormationsService} from '../../services/formations.service';
 import {Formation} from '../../models/formation.model';
-import {Observable} from 'rxjs';
+import {InscriptionsService} from '../../services/inscriptions.service';
+import {InscriptionResponse} from '../../models/inscripton.model';
 
 @Component({
   selector: 'app-home',
@@ -12,12 +13,14 @@ import {Observable} from 'rxjs';
 })
 export class HomeComponent implements OnInit {
   listFormations: Formation[] = [];
+  listInscriptionsId: (string | null)[] = [];
   loading = false;
 
-  constructor(private formationsService: FormationsService) {}
+  constructor(private formationsService: FormationsService, private inscriptionsService: InscriptionsService) {}
 
   ngOnInit() {
     this.loadFormations();
+    this.loadInscriptions();
   }
 
   loadFormations() {
@@ -33,5 +36,18 @@ export class HomeComponent implements OnInit {
         this.loading = false;
       }
     });
+  }
+
+  loadInscriptions() {
+    this.inscriptionsService.getMyInscriptions().subscribe({
+      next: (data) => {
+        this.listInscriptionsId = data.map((data) => {
+          if (data.status === "APPROVED") {
+            return data.formationId
+          }
+          return null;
+        });
+      }
+    })
   }
 }

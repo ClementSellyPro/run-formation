@@ -4,4 +4,5 @@ export interface Formation {
   description: string;
   domaine: string;
   duration: number;
+  content?: string;
 }

@@ -11,7 +11,15 @@
   <p><span class="formation-duration">Durée:</span> {{ formationData.duration }} Mois</p>
 
   @if (inscriptionStatus === "APPROVED") {
-    <p>Contenu</p>
+    <div class="formation-contenu-container">
+      <div class="formation-contenu-titles">
+        <h2>Débutez votre formation</h2>
+        <h3>Retrouvez ci-dessous le contenu de la formation:</h3>
+      </div>
+      <p>
+        {{ formationData.content }}
+      </p>
+    </div>
   } @else {
     <button class="formation-inscription-btn" (click)="inscriptionFormation(formationData.id)">
       {{ inscriptionStatus === "NONE" ? "M'inscrire à la formation" : "Inscription en cours de validation"}}
