@@ -26,7 +26,6 @@ export class FormationsService {
         description: true,
         domaine: true,
         duration: true,
-        content: true,
       },
     });
 

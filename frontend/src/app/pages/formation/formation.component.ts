@@ -22,6 +22,7 @@ enum InscriptionStatus {
 export class FormationComponent implements OnInit {
   formationId!: string | null;
   formationData!: Formation;
+  formationContent!: string;
   loading = false;
   myInscriptions: InscriptionResponse[] = [];
   inscriptionStatus: InscriptionStatus = InscriptionStatus.NONE;
@@ -74,6 +75,7 @@ export class FormationComponent implements OnInit {
         }
         else if (currentFormation.status === 'APPROVED') {
           this.inscriptionStatus = InscriptionStatus.APPROVED;
+          this.loadFormationContent(currentFormation.formationId);
         }
       },
       error: error => console.error(error)
@@ -90,5 +92,15 @@ export class FormationComponent implements OnInit {
       },
       error: error => console.error(error)
     });
+  }
+
+  loadFormationContent(id: string) {
+    this.inscriptionsService.getFormationContent(id).subscribe({
+       next: (data) => {
+         if (data.content) {
+           this.formationContent = data.content;
+         }
+       }
+    })
   }
 }

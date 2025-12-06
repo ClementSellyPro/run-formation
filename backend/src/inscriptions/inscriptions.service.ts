@@ -1,5 +1,6 @@
 import {
   ConflictException,
+  ForbiddenException,
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
@@ -31,7 +32,6 @@ export class InscriptionsService {
             description: true,
             domaine: true,
             duration: true,
-            content: true,
           },
         },
       },
@@ -106,5 +106,28 @@ export class InscriptionsService {
       where: { id },
       data: { status: 'REJECTED' },
     });
+  }
+
+  async getFormationContent(userId: string, formationId: string) {
+    const inscription = await this.prisma.inscription.findUnique({
+      where: {
+        userId_formationId: { userId, formationId },
+      },
+      include: {
+        formation: true,
+      },
+    });
+
+    if (!inscription) {
+      throw new NotFoundException("Vous n'êtes pas inscrit à cette formation");
+    }
+
+    if (inscription.status !== 'APPROVED') {
+      throw new ForbiddenException(
+        'Votre inscription doit être approuvée pour accéder au contenu',
+      );
+    }
+
+    return inscription.formation;
   }
 }

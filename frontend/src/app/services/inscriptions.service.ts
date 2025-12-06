@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Inscription, InscriptionResponse} from '../models/inscripton.model';
 import {Observable, tap} from 'rxjs';
+import {Formation} from '../models/formation.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +22,10 @@ export class InscriptionsService {
   // USER : Voir ses inscriptions
   getMyInscriptions(): Observable<InscriptionResponse[]> {
     return this.http.get<InscriptionResponse[]>(`${this.apiUrl}/my-inscriptions`);
+  }
+
+  // USER : Accéder au contenu d'une formation (si approuvé) ✅
+  getFormationContent(formationId: string): Observable<Formation> {
+    return this.http.get<Formation>(`${this.apiUrl}/${formationId}/content`);
   }
 }

@@ -58,4 +58,13 @@ export class InscriptionsController {
   async reject(@Param('id') id: string) {
     return this.inscriptionsService.reject(id);
   }
+
+  // USER : Contenu formation inscrit et approuvé
+  @Get(':formationId/content')
+  async getContent(
+    @User() user: { id: string },
+    @Param('formationId') formationId: string,
+  ) {
+    return this.inscriptionsService.getFormationContent(user.id, formationId);
+  }
 }
