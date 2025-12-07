@@ -21,7 +21,7 @@ enum InscriptionStatus {
 })
 export class FormationComponent implements OnInit {
   formationId!: string | null;
-  formationData!: Formation;
+  formationData: Formation | null = null;
   formationContent!: string;
   loading = false;
   myInscriptions: InscriptionResponse[] = [];

@@ -2,27 +2,33 @@
   @if( loading ) {
     <p>Chargement...</p>
   }
-  <a class="formation-back-link" routerLink="/home"><-- Retour à la liste de formation</a>
 
-  <div class="formation-title-description">
-    <h1 class="formation-title">{{ formationData.title }}</h1>
-    <p>{{ formationData.description }}</p>
-  </div>
-  <p><span class="formation-duration">Durée:</span> {{ formationData.duration }} Mois</p>
+  @if(formationData){
+    <a class="formation-back-link" routerLink="/home">
+      <-- Retour à la liste de formation
+    </a>
 
-  @if (inscriptionStatus === "APPROVED") {
-    <div class="formation-contenu-container">
-      <div class="formation-contenu-titles">
-        <h2>Débutez votre formation</h2>
-        <h3>Retrouvez ci-dessous le contenu de la formation:</h3>
-      </div>
-      <p>
-        {{ formationContent }}
-      </p>
+    <div class="formation-title-description">
+      <h1 class="formation-title">{{ formationData.title }}</h1>
+      <p>{{ formationData.description }}</p>
     </div>
-  } @else {
-    <button class="formation-inscription-btn" (click)="inscriptionFormation(formationData.id)">
-      {{ inscriptionStatus === "NONE" ? "M'inscrire à la formation" : "Inscription en cours de validation"}}
-    </button>
+    <p><span class="formation-duration">Durée:</span> {{ formationData.duration }} Mois</p>
+
+    @if (inscriptionStatus === "APPROVED") {
+      <div class="formation-contenu-container">
+        <div class="formation-contenu-titles">
+          <h2>Débutez votre formation</h2>
+          <h3>Retrouvez ci-dessous le contenu de la formation:</h3>
+        </div>
+        <p>
+          {{ formationContent }}
+        </p>
+      </div>
+    } @else {
+      <button class="formation-inscription-btn" (click)="inscriptionFormation(formationData!.id)">
+        {{ inscriptionStatus === "NONE" ? "M'inscrire à la formation" : "Inscription en cours de validation"}}
+      </button>
+    }
   }
+
 </div>
