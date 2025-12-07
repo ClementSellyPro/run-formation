@@ -68,6 +68,9 @@ npm install
 cd backend
 npm run start:dev
 ```
+Si vous rencontrez cette erreur: 
+"PrismaClientInitializationError: Can't reach database server at `localhost:3306`", 
+vérifiez que votre serveur MySQL est bien démarré.
 
 **Terminal 2** (Frontend) :
 ```bash

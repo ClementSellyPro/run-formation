@@ -94,11 +94,6 @@ form button:disabled {
   filter: brightness(70%);
 }
 
-.error-message {
-  color: #c53131;
-}
-
-
 @media (max-width: 600px) {
   .auth-container {
     gap: 32px;

@@ -11,3 +11,7 @@
 body {
   background-color: #FFFDF6;
 }
+
+.error-message {
+  color: #c53131;
+}

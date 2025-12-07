@@ -28,6 +28,7 @@
       <button class="formation-inscription-btn" (click)="inscriptionFormation(formationData!.id)">
         {{ inscriptionStatus === "NONE" ? "M'inscrire à la formation" : "Inscription en cours de validation"}}
       </button>
+      <p class="error-message">{{ errorMessage }}</p>
     }
   }
 

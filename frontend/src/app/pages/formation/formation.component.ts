@@ -26,6 +26,7 @@ export class FormationComponent implements OnInit {
   loading = false;
   myInscriptions: InscriptionResponse[] = [];
   inscriptionStatus: InscriptionStatus = InscriptionStatus.NONE;
+  errorMessage: string = "";
 
   constructor(
     private formationsService: FormationsService,
@@ -90,7 +91,12 @@ export class FormationComponent implements OnInit {
         this.inscriptionStatus = InscriptionStatus.PENDING;
         this.loadInscriptions();
       },
-      error: error => console.error(error)
+      error: error => {
+        if (error.status === 409) {
+          this.errorMessage = "Désolez mais votre demande a été rejeté pour cette formation.";
+        }
+        console.error(error);
+      }
     });
   }
 
