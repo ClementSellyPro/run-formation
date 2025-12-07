@@ -14,6 +14,7 @@ import {AuthService} from '../../../services/auth.service';
 })
 export class SignupComponent {
   signupForm!: FormGroup;
+  errorMessage: string = "";
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,6 +28,8 @@ export class SignupComponent {
   }
 
   onSubmit() {
+    this.errorMessage = "";
+
     if (this.signupForm.invalid) return;
 
     this.authService.signup(this.signupForm.value).subscribe({
@@ -34,6 +37,11 @@ export class SignupComponent {
         this.router.navigate(['/home']);
       },
       error: (error: any) => {
+        if (error.status === 409) {
+          this.errorMessage = "Cette adresse e-mail existe déjà.";
+        } else {
+          this.errorMessage = "Une erreur est survenue";
+        }
         console.error(error);
       }
     })

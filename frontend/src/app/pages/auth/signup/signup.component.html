@@ -22,6 +22,8 @@
     <button type="submit" [disabled]="signupForm.invalid">Envoyer</button>
   </form>
 
+  <p class="error-message">{{ errorMessage }}</p>
+
   <p>Vous avez déjà un compte ? <a routerLink="/auth/login" class="signup-login-link">Connectez vous ici</a></p>
 </div>
 
